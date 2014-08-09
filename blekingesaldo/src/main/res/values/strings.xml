@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blekinge Saldo</string>
+    <string name="scan_instruction">Håll fram kortet</string>
+    <string name="scan_unsupported">NFC stöds ej</string>
+    <string name="scan_disabled">NFC ej aktivt</string>
+    <string name="scan_inprogress">Läser&#8230;</string>
+</resources>
