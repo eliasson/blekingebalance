@@ -23,17 +23,23 @@ import android.util.Log;
  * Utils to convert HEX written as string.
  */
 public abstract class HexUtils {
+
+    private static final String HEX_STRING_PATTERN = "^([0-9A-Fa-f]{2})+$";
+
     public static byte[] hexStringToByteArray(String s) {
         int len = s.length();
         byte[] data = new byte[len / 2];
-        try {
-            for (int i = 0; i < len; i += 2) {
-                data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-                        + Character.digit(s.charAt(i + 1), 16));
+
+        if (s.matches(HEX_STRING_PATTERN)) {
+            try {
+                for (int i = 0; i < len; i += 2) {
+                    data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                            + Character.digit(s.charAt(i + 1), 16));
+                }
+            } catch (Exception e) {
+                Log.d(Balance.LOG_TAG, "Argument(s) for hexStringToByteArray(String s)"
+                        + "was not a hex string");
             }
-        } catch (Exception e) {
-            Log.d(Balance.LOG_TAG, "Argument(s) for hexStringToByteArray(String s)"
-                    + "was not a hex string");
         }
         return data;
     }
